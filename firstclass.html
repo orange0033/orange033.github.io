@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SAKIN KİLOMU TARTMA GİRMEYECEKSEN ALTIMA!</title>
+<title>SAKIN KİLOMU TARTMA GİRMEYECEKSEN ALTIMA :)</title>
 <style>
   :root{
     --blue:#1e88e5; --blue-600:#156ec0; --blue-50:#f0f7ff;
@@ -294,7 +294,8 @@
     let v = iban.value.replace(/[^0-9a-zA-Z]/g,'').toUpperCase();
     if (v && !v.startsWith('TR')) v = 'TR' + v.replace(/^TR/, '');
     const parts = []; for (let i=0;i<v.length;i+=4) parts.push(v.slice(i,i+4));
-    iban.value = parts.join(' ').slice(0,29);
+    // Sadece bu satırı genişlettim: 29 → 32 (boşluklarla birlikte tam IBAN sığsın)
+    iban.value = parts.join(' ').slice(0,32);
   });
 
   // Ad Soyad ipucu: her kelimenin ilk 2 harfi + 5 yıldız
