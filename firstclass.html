@@ -31,7 +31,7 @@
 
   /* Blocks */
   .block{background:var(--blue-50);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 1px 2px rgba(9,30,66,.04);margin-top:10px}
-  .block h3{margin:0;padding:10px 14px;border-bottom:1px solid var(--line);font-size:15px;background:var(--white)}
+  .block h3{margin:0;padding:10px 14px;border-bottom:1px solid var(--line);font-size:15px;background:#fff}
   .block .inner{padding:12px}
 
   /* Segmented radios */
@@ -44,11 +44,11 @@
   /* Account card */
   .acct{margin-top:8px;border:1px solid var(--line);border-radius:8px;padding:10px;display:flex;gap:12px;align-items:center;background:#fff}
   .acct .name{font-weight:800}
-  .acct .meta{font-size:12px;color:var(--muted);margin-top:2px}
+  .acct .meta{font-size:12px;color:#muted;margin-top:2px}
   .bal{margin-left:auto;display:flex;gap:22px;flex-wrap:wrap}
   .bal .k{font-size:12.5px}
   .bal .k span{display:block}
-  .bal .k .t{color:var(--muted);font-size:11.5px}
+  .bal .k .t{color:#6b7a8b;font-size:11.5px}
   .bal .k .v{font-weight:800}
   .btn-ghost{width:30px;height:30px;border:1px solid var(--line);border-radius:8px;background:#f8fbff;display:grid;place-items:center}
   .btn-ghost svg{width:16px;height:16px;color:#5c6f82}
@@ -66,11 +66,8 @@
   .tiny-info{width:20px;height:20px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:#0a63a0;background:#fff}
 
   /* Amount (compact + TL hemen sağında) */
-  .amount{
-    display:inline-flex; align-items:center; gap:4px;
-  }
-  #tutarLira,
-  #tutarKurus{
+  .amount{display:inline-flex; align-items:center; gap:4px;}
+  #tutarLira,#tutarKurus{
     padding:6px 7px; font-size:13px; border:1px solid var(--line); border-radius:6px; background:#fff;
     direction:ltr; text-align:left; height:34px;
   }
@@ -294,8 +291,8 @@
     let v = iban.value.replace(/[^0-9a-zA-Z]/g,'').toUpperCase();
     if (v && !v.startsWith('TR')) v = 'TR' + v.replace(/^TR/, '');
     const parts = []; for (let i=0;i<v.length;i+=4) parts.push(v.slice(i,i+4));
-    // Sadece bu satırı genişlettim: 29 → 32 (boşluklarla birlikte tam IBAN sığsın)
-    iban.value = parts.join(' ').slice(0,32);
+    // Yazma sınırı kaldırıldı (slice kaldırıldı)
+    iban.value = parts.join(' ');
   });
 
   // Ad Soyad ipucu: her kelimenin ilk 2 harfi + 5 yıldız
